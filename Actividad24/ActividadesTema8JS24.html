@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actividad 24</title>
+  </head>
+  <body>
+    <script>
+      /*Crea un programa que haga uso de la estructura try...catch..finally incluyendo un return en cada uno de los tres bloques. Lanza un error que deba capturar el bloque catch y observa los resultados devueltos. ¿A qué conclusiones llegas?*/
+      function pruebaTryCatchFinally() {
+        try {
+          console.log("Dentro del bloque try");
+          // Lanzamos un error intencionadamente
+          throw new Error("Este es un error forzado");
+          // Este return no se ejecutará debido al error lanzado anteriormente
+          return "Resultado desde try";
+        } catch (error) {
+          console.error("Error capturado en catch:", error);
+          // A pesar del error, podemos decidir retornar un valor específico
+          return "Resultado desde catch";
+        } finally {
+          console.log("Ejecución del bloque finally");
+          // El return aquí sobrescribirá cualquier otro return anterior en try o catch
+          return "Resultado desde finally";
+        }
+      }
+    </script>
+  </body>
+</html>

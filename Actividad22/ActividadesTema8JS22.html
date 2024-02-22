@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actividad 22</title>
+  </head>
+  <body>
+    <script>
+      /*Elabora un algoritmo en el que pueda verse funcionando cada uno de los tres tipos de errores que pueden darse en una aplicación web: error, excepción y aviso.*/
+
+      // Error de sintaxis
+
+      // Descomenta la siguiente línea para ver dicho error.
+      // console.log("Este es un error de sintaxis
+
+      // Excepción
+      try {
+        // Intentamos llamar a una función que no existe para forzar una excepción
+        inexistenteFunction();
+      } catch (error) {
+        console.error("Este es un error de excepción:", error);
+      }
+
+      // Aviso (Con console.warn)
+      console.warn("Este es un aviso sobre una acción no recomendada.");
+    </script>
+  </body>
+</html>

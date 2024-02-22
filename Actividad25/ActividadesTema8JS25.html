@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actividad 25</title>
+  </head>
+  <body>
+    <script type="module">
+      /*Elabora un programa JavaScript que haga uso de algún módulo externo de tu interés. El mismo programa debe importar componentes concretos de otro módulo que hayas desarrollado previamente.*/
+
+      // Suponiendo que lodash y misFunciones están disponibles en tu entorno
+      import { debounce } from "lodash";
+      import { saludar } from "./ActividadTema8JS25.js"; // Ajusta la ruta según tu estructura de archivos
+
+      // Uso de debounce de Lodash
+      window.addEventListener(
+        "resize",
+        debounce(() => {
+          console.log("Redimensionando la ventana!");
+        }, 200)
+      );
+
+      // Uso de la función personalizada
+      console.log(saludar("Mundo"));
+    </script>
+  </body>
+</html>

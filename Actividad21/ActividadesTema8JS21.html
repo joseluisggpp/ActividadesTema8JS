@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 21</title>
+  </head>
+  <body>
+    <script>
+      /*Crea un programa que ejemplifique en tiempo de desarrollo y otro en tiempo de ejecución. Aporta capturas que evidencien ambos ejemplos.*/
+
+      /*Un error en tiempo de desarrollo ocurre cuando hay un problema en el código que puede ser detectado antes de que el programa se ejecute. Esto podría ser un error de sintaxis o cualquier otro error que impide que el programa se compile o se ejecute correctamente.*/
+
+      /*Aquí por ejemplo hay un error de sintaxis al faltar el paréntesis para cerrar la función de console.log()*/
+      let saludo=()=> {
+        console.log("Hola mundo"/*)*/ //Descomenta el paréntesis para arreglar el error
+      }
+      /*Un error en tiempo de ejecución, por otro lado, es un error que ocurre mientras el programa se está ejecutando. Estos errores son a menudo más difíciles de detectar y requieren pruebas del programa para ser identificados.*/
+         let obtenerPropiedad= ()=> {
+          let objeto = undefined;
+          console.log(obj.propiedad);
+        }
+    </script>
+  </body>
+</html>

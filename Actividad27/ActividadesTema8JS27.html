@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actividad 27</title>
+  </head>
+  <body>
+    <button id="createFile">Crear Archivo</button>
+    <script>
+      /*Repasa las posibilidades de la API FileSystem y elabora un pequeño programa que haga uso de alguna de las funcionalidades que incorpora.*/
+      document.getElementById("createFile").addEventListener("click", () => {
+        if (window.requestFileSystem || window.webkitRequestFileSystem) {
+          // Solicitar un sistema de archivos temporal con 5MB de espacio
+          const requestedBytes = 5 * 1024 * 1024; // 5MB
+
+          // Solicitar sistema de archivos (prefijo webkit para compatibilidad con Chrome)
+          window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+          window.requestFileSystem(
+            window.TEMPORARY,
+            requestedBytes,
+            (fs) => {
+              // Crear un archivo y abrirlo para escribir
+              fs.root.getFile(
+                "nuevoArchivo.txt",
+                { create: true, exclusive: false },
+                (fileEntry) => {
+                  fileEntry.createWriter((fileWriter) => {
+                    fileWriter.onwriteend = () => {
+                      console.log("Archivo escrito con éxito.");
+                    };
+
+                    fileWriter.onerror = (e) => {
+                      console.log("Error al escribir el archivo: " + e.toString());
+                    };
+
+                    // Crear un nuevo Blob y escribirlo en el archivo
+                    const blob = new Blob(["Contenido de ejemplo para el archivo"], { type: "text/plain" });
+                    fileWriter.write(blob);
+                  }, errorHandler);
+                },
+                errorHandler
+              );
+            },
+            errorHandler
+          );
+
+          function errorHandler(e) {
+            console.error("Error: " + e.name);
+          }
+        } else {
+          console.log("La API FileSystem no está soportada en este navegador.");
+        }
+      });
+    </script>
+  </body>
+</html>

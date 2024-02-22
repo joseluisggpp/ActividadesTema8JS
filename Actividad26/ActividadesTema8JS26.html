@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actividad 26</title>
+  </head>
+  <body>
+    <script type="module">
+      /*Escribe un módulo que facilite trabajar con la API de geolocalización, incluyendo funciones como askPermissions(), getLongitude() o getAltitude(). Luego importa el módulo a tu programa usando el espacio de nombres geo e invoca todas las funciones incluidas en el módulo para ejemplificar su uso.*/
+      import { geo } from "./ActividadTema8JS26.js";
+
+      const successCallback = (position) => {
+        console.log(`Longitude: ${geo.getLongitude(position)}`);
+        console.log(`Altitude: ${geo.getAltitude(position)}`);
+      };
+
+      const errorCallback = (error) => {
+        console.error("Geolocation error:", error);
+      };
+
+      geo.askPermissions(successCallback, errorCallback);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actividad 28</title>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="600" height="600" style="border: 1px solid #000"></canvas>
+    <script>
+      /*Usa la API Canvas para dibujar en tu página web, sobre un lienzo de 600x600px, el logotipo de Mitsubishi.*/
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Establecer el color de relleno a rojo
+      ctx.fillStyle = "#E60012";
+
+      // Dibuja los tres rombos/diamantes para formar el logotipo de Mitsubishi
+      function drawDiamond(x, y) {
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + 50, y + 86.6); // 86.6 es la altura de un triángulo equilátero de lado 100
+        ctx.lineTo(x, y + 173.2); // Doble de 86.6
+        ctx.lineTo(x - 50, y + 86.6);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      // Ajuste de la posición central y dibujo de los diamantes
+      // Centro del lienzo
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+
+      // Dibuja los tres rombos
+      drawDiamond(centerX, centerY - 86.6); // Superior
+      drawDiamond(centerX - 50, centerY + 43.3); // Inferior izquierdo
+      drawDiamond(centerX + 50, centerY + 43.3); // Inferior derecho
+    </script>
+  </body>
+</html>

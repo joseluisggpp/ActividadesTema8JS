@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actividad 23</title>
+  </head>
+  <body>
+    <script>
+      /*Escribe una aplicación que contenga un switch con siete opciones y dentro de cada una de ellas crea un objeto con cada uno de los siete constructores que hemos visto para definir cada uno de los siete tipos de errores que hemos citado. Luego utiliza una única estructura try...catch que sea capaz de gestionar cualquiera de ellos.*/
+      // Función para simular errores
+      function generarError(tipo) {
+        switch (tipo) {
+          case 1:
+            // SyntaxError
+            eval("foo bar");
+            break;
+          case 2:
+            // ReferenceError
+            inexistenteFunction();
+            break;
+          case 3:
+            // RangeError
+            new Array(-1);
+            break;
+          case 4:
+            // TypeError
+            null.f();
+            break;
+          case 5:
+            // URIError
+            decodeURIComponent("%");
+            break;
+          case 6:
+            // EvalError
+            eval("var var = 3;");
+            break;
+          case 7:
+            // Error general
+            throw new Error("Error general");
+            break;
+          default:
+            console.log("Opción no válida");
+        }
+      }
+
+      try {
+        // Cambia el número para generar diferentes tipos de errores
+        generarError(1);
+      } catch (error) {
+        if (error instanceof SyntaxError) {
+          console.error("Capturado SyntaxError:", error.message);
+        } else if (error instanceof ReferenceError) {
+          console.error("Capturado ReferenceError:", error.message);
+        } else if (error instanceof RangeError) {
+          console.error("Capturado RangeError:", error.message);
+        } else if (error instanceof TypeError) {
+          console.error("Capturado TypeError:", error.message);
+        } else if (error instanceof URIError) {
+          console.error("Capturado URIError:", error.message);
+        } else if (error instanceof EvalError) {
+          console.error("Capturado EvalError:", error.message);
+        } else if (error instanceof Error) {
+          console.error("Capturado Error general:", error.message);
+        } else {
+          console.log("Tipo de error no manejado");
+        }
+      }
+    </script>
+  </body>
+</html>

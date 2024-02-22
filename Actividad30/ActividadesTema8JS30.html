@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actividad 28</title>
+  </head>
+  <body>
+    <script>
+      /*Escribe una aplicación que, por medio de la API Notification, notifique al usuario cada 30 segundos que debe visitar el enlace proporcionado por la propia notificación. Cada vez que aparezca una notificación, debe cerrarse automáticamente pasados cinco segundos. Una vez que se visite el enlace, deben cesar las notificaciones.*/
+      // Verifica si el navegador soporta notificaciones
+      if (!("Notification" in window)) {
+        alert("Este navegador no soporta notificaciones de escritorio");
+      }
+
+      // Solicita permiso al usuario
+      else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then((permission) => {
+          if (permission === "granted") {
+            iniciarNotificaciones();
+          }
+        });
+      }
+
+      function mostrarNotificacion() {
+        const notificacion = new Notification("Tiempo de descanso", {
+          body: "Visita nuestro enlace para más información.",
+          icon: "url_a_un_icono",
+        });
+
+        // Redirige al usuario al hacer clic en la notificación
+        notificacion.onclick = function () {
+          window.open("http://tu-enlace.com");
+          clearInterval(intervaloNotificaciones); // Detiene las notificaciones
+        };
+
+        // Cierra la notificación después de 5 segundos
+        setTimeout(() => {
+          notificacion.close();
+        }, 5000);
+      }
+
+      let intervaloNotificaciones;
+
+      function iniciarNotificaciones() {
+        intervaloNotificaciones = setInterval(mostrarNotificacion, 30000);
+      }
+    </script>
+  </body>
+</html>
