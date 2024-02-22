@@ -9,11 +9,9 @@
     <script type="module">
       /*Elabora un programa JavaScript que haga uso de algún módulo externo de tu interés. El mismo programa debe importar componentes concretos de otro módulo que hayas desarrollado previamente.*/
 
-      // Suponiendo que lodash y misFunciones están disponibles en tu entorno
       import { debounce } from "lodash";
-      import { saludar } from "./ActividadTema8JS25.js"; // Ajusta la ruta según tu estructura de archivos
+      import { saludar } from "./ActividadTema8JS25.js";
 
-      // Uso de debounce de Lodash
       window.addEventListener(
         "resize",
         debounce(() => {
@@ -21,7 +19,6 @@
         }, 200)
       );
 
-      // Uso de la función personalizada
       console.log(saludar("Mundo"));
     </script>
   </body>

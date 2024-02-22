@@ -8,19 +8,15 @@
   <body>
     <button id="createFile">Crear Archivo</button>
     <script>
-      /*Repasa las posibilidades de la API FileSystem y elabora un pequeño programa que haga uso de alguna de las funcionalidades que incorpora.*/
       document.getElementById("createFile").addEventListener("click", () => {
         if (window.requestFileSystem || window.webkitRequestFileSystem) {
-          // Solicitar un sistema de archivos temporal con 5MB de espacio
           const requestedBytes = 5 * 1024 * 1024; // 5MB
 
-          // Solicitar sistema de archivos (prefijo webkit para compatibilidad con Chrome)
           window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
           window.requestFileSystem(
             window.TEMPORARY,
             requestedBytes,
             (fs) => {
-              // Crear un archivo y abrirlo para escribir
               fs.root.getFile(
                 "nuevoArchivo.txt",
                 { create: true, exclusive: false },
@@ -34,7 +30,6 @@
                       console.log("Error al escribir el archivo: " + e.toString());
                     };
 
-                    // Crear un nuevo Blob y escribirlo en el archivo
                     const blob = new Blob(["Contenido de ejemplo para el archivo"], { type: "text/plain" });
                     fileWriter.write(blob);
                   }, errorHandler);

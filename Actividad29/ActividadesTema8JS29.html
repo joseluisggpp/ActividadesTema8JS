@@ -9,7 +9,6 @@
     <div id="info"></div>
     <script>
       /*Crea un programa en el que usando la API Web Storage consigas guardar en el cliente un JSON que contiene información sobre un vehículo(marca, modelo, número de bastidor, cilindrada, número de puertas, color y algunos datos del propietario, como nombre, apellidos, dirección, teléfono y correo electrónico) Tras el almacenamiento, debes leer toda la información guardada y mostrarla en pantalla en formato HTML. Al cerrar el navegador toda la información almacenada debe ser retirada de la memoria.*/
-      // Definir información del vehículo en un objeto
       const vehicle = {
         marca: "Tesla",
         modelo: "Model 3",
@@ -26,10 +25,8 @@
         },
       };
 
-      // Guardar la información del vehículo en sessionStorage
       sessionStorage.setItem("vehicleInfo", JSON.stringify(vehicle));
 
-      // Leer la información almacenada y mostrarla en HTML
       function displayVehicleInfo() {
         const infoElement = document.getElementById("info");
         const storedInfo = JSON.parse(sessionStorage.getItem("vehicleInfo"));
@@ -49,7 +46,6 @@
         infoElement.innerHTML = htmlContent;
       }
 
-      // Ejecutar la función para mostrar los datos
       displayVehicleInfo();
     </script>
   </body>
